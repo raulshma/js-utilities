@@ -1,5 +1,5 @@
 .copy-button {
-  position: fixed !important;
+  position: absolute !important;
   right: 0;
   margin: 5px;
   margin-right: 13px;

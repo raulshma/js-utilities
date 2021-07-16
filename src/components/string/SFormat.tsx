@@ -61,7 +61,7 @@ export default function FString() {
         title: 'Failed.',
         description: ex.message,
         status: 'error',
-        duration: 4000,
+        duration: 10000,
         isClosable: true,
       });
     }
