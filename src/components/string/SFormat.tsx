@@ -2,8 +2,12 @@ import React from 'react';
 import {
   Box,
   Button,
+  Center,
+  Code,
+  Divider,
   Flex,
   FormControl,
+  FormHelperText,
   FormLabel,
   Heading,
   Input,
@@ -14,42 +18,20 @@ import {
 import { useToast } from '@chakra-ui/react';
 import './style.css';
 
-export default function SubString() {
+export default function FString() {
   const toast = useToast();
 
   let [value, setValue] = React.useState<string>('');
   let [output, setOutput] = React.useState<string>('');
 
-  let [start, setStart] = React.useState<string>('');
-  let [end, setEnd] = React.useState<string>('');
+  let [space, setSpace] = React.useState<number>(4);
 
   const { hasCopied, onCopy } = useClipboard(output);
 
   const handleInputChange = (e: any) => {
     let inputValue: string = e.target.value;
     setValue(inputValue);
-  };
-
-  const handleStartChange = (e: any) => {
-    let inputValue: string = e.target.value;
-    setStart(inputValue);
-  };
-
-  const handleEndChange = (e: any) => {
-    let inputValue: string = e.target.value;
-    setEnd(inputValue);
-  };
-
-  const processString = (e: any) => {
-    if (start === '' || end === '')
-      return toast({
-        title: 'Required.',
-        description: 'Start and end values are needed.',
-        status: 'info',
-        duration: 4000,
-        isClosable: true,
-      });
-    if (value === '' || value.length === 0)
+    if (inputValue.length === 0 || inputValue === '') {
       return toast({
         title: 'Required.',
         description: 'Text is required.',
@@ -57,50 +39,64 @@ export default function SubString() {
         duration: 4000,
         isClosable: true,
       });
-
-    setOutput(value.substring(Number(start), Number(end)));
-    return toast({
-      title: 'Success.',
-      status: 'success',
-      duration: 2000,
-    });
+    }
+    formatString(inputValue);
   };
+
+  const formatString = (localValue: string, spacing: string = '') => {
+    try {
+      const dataObj = JSON.parse(localValue);
+      let localSpace;
+      if (spacing === '') localSpace = space;
+      else localSpace = spacing;
+      const beautifiedJSON = JSON.stringify(dataObj, null, Number(localSpace));
+      setOutput(beautifiedJSON);
+      toast({
+        title: 'Success.',
+        status: 'success',
+        duration: 2000,
+      });
+    } catch (ex: any) {
+      toast({
+        title: 'Failed.',
+        description: ex.message,
+        status: 'error',
+        duration: 4000,
+        isClosable: true,
+      });
+    }
+  };
+
+  const handleSpaceChange = (e: any) => {
+    let inputValue: string = e.target.value;
+    setSpace(Number(inputValue));
+    formatString(value, inputValue);
+  };
+
   return (
     <React.Fragment>
       <Box m={'8px'}>
         <Heading mt="1rem" mb="2rem" size="lg">
-          Extract a contiguous sequence of characters within a string
+          Basic JSON Beautifier
         </Heading>
         <Flex gridGap={'6'} border="teal">
           <Flex flexDirection="column">
-            <FormControl id="start">
-              <FormLabel>Start</FormLabel>
+            <FormControl id="space">
+              <FormLabel>Spacing</FormLabel>
               <Input
                 type="number"
-                value={start}
-                onChange={handleStartChange}
+                value={space}
+                onChange={handleSpaceChange}
                 size="sm"
               />
             </FormControl>
-            <FormControl id="end">
-              <FormLabel>End</FormLabel>
-              <Input
-                type="number"
-                value={end}
-                onChange={handleEndChange}
-                size="sm"
-              />
-            </FormControl>
-            <Button colorScheme="green" mt="4" onClick={processString}>
-              Process
-            </Button>
           </Flex>
           <Textarea
             mb={'4px'}
             minHeight={'185px'}
             value={value}
             onChange={handleInputChange}
-            placeholder="Enter/Paste text here"
+            placeholder="Enter/Paste JSON here"
             size="md"
           />
         </Flex>
@@ -114,16 +110,16 @@ export default function SubString() {
             >
               {hasCopied ? 'Copied' : 'Copy'}
             </Button>
-            <Text
+            <Box
               p="6"
               mt="4"
               border="solid"
               borderColor="gray.500"
               borderWidth="1px"
-              fontSize="xl"
+              fontSize="sm"
             >
-              {output}
-            </Text>
+              <pre>{output}</pre>
+            </Box>
           </Box>
         )}
       </Box>

@@ -1,11 +1,13 @@
 import { Redirect, Route, Switch } from 'react-router-dom';
 import React, { useState } from 'react';
 import './App.css';
-import Navbar from './components/Navbar';
 import Home from './pages/Home';
 import Help from './pages/Help';
+
+import Navbar from './components/Navbar';
 import SLength from './components/string/SLength';
 import SubString from './components/string/SubString';
+import SFormat from './components/string/SFormat';
 
 function App() {
   return (
@@ -16,6 +18,7 @@ function App() {
         <Route path="/home" component={Home} />
         <Route path="/slength" component={SLength} />
         <Route path="/sstring" component={SubString} />
+        <Route path="/sformater" component={SFormat} />
         <Route exact path="/">
           <Redirect to="/home" />
         </Route>

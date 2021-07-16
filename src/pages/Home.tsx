@@ -12,13 +12,13 @@ type ListItemType = {
 const ListItems: ListItemType[] = [
   {
     title: 'Length',
-    desc: 'Calculate string length',
+    desc: 'Counts no of characters in string',
     type: 'STRING',
     path: 'slength',
   },
   {
     title: 'SubString',
-    desc: 'Get a part of the string using start and end index',
+    desc: 'Extract a contiguous sequence of characters within a string. For instance, "the best of" is a substring of "It was the best of times".',
     type: 'STRING',
     path: 'sstring',
   },
@@ -32,7 +32,7 @@ const ListItems: ListItemType[] = [
     title: 'Formatter',
     desc: 'Format json string',
     type: 'STRING',
-    path: '',
+    path: 'sformater',
   },
   {
     title: 'Case Conversion',
