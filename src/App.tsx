@@ -8,6 +8,7 @@ import Navbar from './components/Navbar';
 import SLength from './components/string/SLength';
 import SubString from './components/string/SubString';
 import SFormat from './components/string/SFormat';
+import Replacer from './components/string/Replacer';
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
         <Route path="/slength" component={SLength} />
         <Route path="/sstring" component={SubString} />
         <Route path="/sformater" component={SFormat} />
+        <Route path="/replacer" component={Replacer} />
         <Route exact path="/">
           <Redirect to="/home" />
         </Route>

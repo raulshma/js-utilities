@@ -26,7 +26,7 @@ const ListItems: ListItemType[] = [
     title: 'Replacer',
     desc: 'Replace string characters',
     type: 'STRING',
-    path: '',
+    path: 'replacer',
   },
   {
     title: 'Formatter',
