@@ -26,7 +26,7 @@ const ListItems: ListItemType[] = [
     title: 'Replacer',
     desc: 'Replace string characters',
     type: 'STRING',
-    path: 'replacer',
+    path: 'sreplacer',
   },
   {
     title: 'Formatter',
@@ -38,7 +38,7 @@ const ListItems: ListItemType[] = [
     title: 'Case Conversion',
     desc: 'Convert to lower, upper, title, castle etc',
     type: 'STRING',
-    path: '',
+    path: 'sconversion',
   },
 ];
 

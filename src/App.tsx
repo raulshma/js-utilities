@@ -9,6 +9,7 @@ import SLength from './components/string/SLength';
 import SubString from './components/string/SubString';
 import SFormat from './components/string/SFormat';
 import Replacer from './components/string/Replacer';
+import Conversion from './components/string/Conversion';
 
 function App() {
   return (
@@ -20,7 +21,8 @@ function App() {
         <Route path="/slength" component={SLength} />
         <Route path="/sstring" component={SubString} />
         <Route path="/sformater" component={SFormat} />
-        <Route path="/replacer" component={Replacer} />
+        <Route path="/sreplacer" component={Replacer} />
+        <Route path="/sconversion" component={Conversion} />
         <Route exact path="/">
           <Redirect to="/home" />
         </Route>
