@@ -18,7 +18,7 @@ import {
 import { useToast } from '@chakra-ui/react';
 import './style.css';
 
-export default function FString() {
+export default function Formatter() {
   const toast = useToast();
 
   let [value, setValue] = React.useState<string>('');

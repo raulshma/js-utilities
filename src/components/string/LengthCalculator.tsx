@@ -1,15 +1,7 @@
 import React from 'react';
-import {
-  Box,
-  Center,
-  Container,
-  Flex,
-  Heading,
-  Text,
-  Textarea,
-  useColorModeValue,
-} from '@chakra-ui/react';
-export default function SLength() {
+import { Box, Center, Flex, Heading, Text, Textarea } from '@chakra-ui/react';
+
+export default function LengthCalculator() {
   let [value, setValue] = React.useState<string>('');
   let [count, setCount] = React.useState<number>(0);
 

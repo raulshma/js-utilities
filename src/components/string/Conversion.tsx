@@ -136,10 +136,10 @@ export default function Conversion() {
               px={2}
               borderRight="solid"
               borderRightWidth="2px"
-              borderRightColor="green.500"
+              borderRightColor="purple.500"
               borderLeft="solid"
               borderLeftWidth="2px"
-              borderLeftColor="green.500"
+              borderLeftColor="purple.500"
             >
               <Center>
                 <Tooltip
@@ -154,7 +154,7 @@ export default function Conversion() {
                   >
                     <Switch
                       id="pCU"
-                      colorScheme="green"
+                      colorScheme="purple"
                       isChecked={preserveConsecutiveUppercase}
                       onChange={handlePreserverConsecutiveChange}
                     />
@@ -162,14 +162,14 @@ export default function Conversion() {
                 </Tooltip>
               </Center>
               <Button
-                colorScheme="green"
+                colorScheme="purple"
                 size="sm"
                 onClick={() => convertCase(ConvertCase.CamelCase)}
               >
                 CamelCase
               </Button>
               <Button
-                colorScheme="green"
+                colorScheme="purple"
                 size="sm"
                 onClick={() => convertCase(ConvertCase.PascalCase)}
               >

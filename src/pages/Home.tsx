@@ -1,6 +1,15 @@
-import { Flex } from '@chakra-ui/react';
+import {
+  Badge,
+  Box,
+  Flex,
+  Grid,
+  Heading,
+  Stack,
+  VStack,
+} from '@chakra-ui/react';
 import React from 'react';
 import CardItem from '../components/CardItem';
+import { Divider } from '@chakra-ui/react';
 
 type ListItemType = {
   type: string;
@@ -44,16 +53,23 @@ const ListItems: ListItemType[] = [
 
 export default function Home() {
   return (
-    <Flex wrap={'wrap'} gridGap={'6'} justify={'center'}>
-      {ListItems.map((item, idx) => (
-        <CardItem
-          key={idx}
-          title={item.title}
-          desc={item.desc}
-          type={item.type}
-          path={item.path}
-        />
-      ))}
-    </Flex>
+    <Stack spacing="1rem">
+      <Grid placeItems="center">
+        <Badge variant="outline" colorScheme="green">
+          <Heading>Strings</Heading>
+        </Badge>
+      </Grid>
+      <Flex wrap={'wrap'} gridGap={'6'} justify={'center'}>
+        {ListItems.map((item, idx) => (
+          <CardItem
+            key={idx}
+            title={item.title}
+            desc={item.desc}
+            type={item.type}
+            path={item.path}
+          />
+        ))}
+      </Flex>
+    </Stack>
   );
 }

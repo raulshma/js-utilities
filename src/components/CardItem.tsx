@@ -20,8 +20,7 @@ type CardItemProps = {
 export default function CardItem({ type, desc, title, path }: CardItemProps) {
   return (
     <Box
-      maxW={'445px'}
-      w={'auto'}
+      w="360px"
       bg={useColorModeValue('white', 'gray.900')}
       boxShadow={'2xl'}
       rounded={'md'}

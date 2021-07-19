@@ -5,9 +5,9 @@ import Home from './pages/Home';
 import Help from './pages/Help';
 
 import Navbar from './components/Navbar';
-import SLength from './components/string/SLength';
+import LengthCalculator from './components/string/LengthCalculator';
 import SubString from './components/string/SubString';
-import SFormat from './components/string/SFormat';
+import SFormat from './components/string/Formatter';
 import Replacer from './components/string/Replacer';
 import Conversion from './components/string/Conversion';
 
@@ -18,7 +18,7 @@ function App() {
       <Switch>
         <Route path="/help" component={Help} />
         <Route path="/home" component={Home} />
-        <Route path="/slength" component={SLength} />
+        <Route path="/slength" component={LengthCalculator} />
         <Route path="/sstring" component={SubString} />
         <Route path="/sformater" component={SFormat} />
         <Route path="/sreplacer" component={Replacer} />
