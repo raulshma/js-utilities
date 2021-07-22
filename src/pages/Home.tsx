@@ -18,7 +18,7 @@ type ListItemType = {
   path: string;
 };
 
-const ListItems: ListItemType[] = [
+const ListItemsString: ListItemType[] = [
   {
     title: 'Length',
     desc: 'Counts no of characters in string',
@@ -50,17 +50,41 @@ const ListItems: ListItemType[] = [
     path: 'sconversion',
   },
 ];
+const ListItemsDateTime: ListItemType[] = [
+  {
+    title: 'Date Conversions',
+    desc: 'Different datetime conversions',
+    type: 'DATETIME',
+    path: 'dtconversion',
+  },
+];
 
 export default function Home() {
   return (
-    <Stack spacing="1rem">
+    <Stack spacing="1rem" mb="4rem">
       <Grid placeItems="center">
         <Badge variant="outline" colorScheme="green">
           <Heading>Strings</Heading>
         </Badge>
       </Grid>
       <Flex wrap={'wrap'} gridGap={'6'} justify={'center'}>
-        {ListItems.map((item, idx) => (
+        {ListItemsString.map((item, idx) => (
+          <CardItem
+            key={idx}
+            title={item.title}
+            desc={item.desc}
+            type={item.type}
+            path={item.path}
+          />
+        ))}
+      </Flex>
+      <Grid placeItems="center">
+        <Badge variant="outline" colorScheme="green" mt="3rem">
+          <Heading>DateTime</Heading>
+        </Badge>
+      </Grid>
+      <Flex wrap={'wrap'} gridGap={'6'} justify={'center'}>
+        {ListItemsDateTime.map((item, idx) => (
           <CardItem
             key={idx}
             title={item.title}

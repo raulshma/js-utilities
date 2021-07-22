@@ -27,7 +27,6 @@ enum ConvertCase {
 }
 
 export default function Conversion() {
-  const toast = useToast();
 
   let [textValue, setTextValue] = React.useState<string>('');
   let [output, setOutput] = React.useState<string>('');
@@ -95,7 +94,7 @@ export default function Conversion() {
     <React.Fragment>
       <Box m={'8px'}>
         <Heading mt="1rem" mb="2rem" size="lg">
-          Extract a contiguous sequence of characters within a string
+          Various string conversions
         </Heading>
         <Flex gridGap={'6'} border="teal" flexDirection="column">
           <FormControl display="flex" alignItems="center" mb="0">
