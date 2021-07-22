@@ -20,7 +20,7 @@ import { HamburgerIcon, CloseIcon } from '@chakra-ui/icons';
 import { Link as ReachLink } from 'react-router-dom';
 import ColorModeToggle from './ColorModeToggle';
 
-const Links: string[] = ['Home', 'Help'];
+const Links: string[] = ['Help', 'Typing'];
 
 const NavLink = ({ children }: { children: ReactNode }) => (
   <Link
@@ -52,7 +52,13 @@ export default function Simple() {
           onClick={isOpen ? onClose : onOpen}
         />
         <HStack spacing={8} alignItems={'center'}>
-          <Box>Utilities</Box>
+          <Link
+            to={'/'}
+            as={ReachLink}
+            style={{ textDecoration: 'none' }}
+          >
+            Utilities
+          </Link>
           <HStack as={'nav'} spacing={4} display={{ base: 'none', md: 'flex' }}>
             {Links.map((link) => (
               <NavLink key={link}>{link}</NavLink>

@@ -11,27 +11,28 @@ import SubString from './components/string/SubString';
 import SFormat from './components/string/Formatter';
 import Replacer from './components/string/Replacer';
 import Conversion from './components/string/Conversion';
+import SToArray from './components/string/SToArray';
 
 import DTConversions from './components/datetime/DTConversions';
+import TypingGame from './pages/TypingGame';
 
 function App() {
   return (
     <React.Fragment>
       <Navbar />
       <Switch>
-        <Route path="/help" component={Help} />
-        <Route path="/home" component={Home} />
+        <Route path="/Help" component={Help} />
+        <Route path="/Typing" component={TypingGame} />
         {/* String Routes */}
         <Route path="/slength" component={LengthCalculator} />
         <Route path="/sstring" component={SubString} />
         <Route path="/sformater" component={SFormat} />
         <Route path="/sreplacer" component={Replacer} />
         <Route path="/sconversion" component={Conversion} />
+        <Route path="/sstoarray" component={SToArray} />
         {/* DateTime Routes */}
         <Route path="/dtconversion" component={DTConversions} />
-        <Route exact path="/">
-          <Redirect to="/home" />
-        </Route>
+        <Route exact path="/" component={Home}></Route>
       </Switch>
     </React.Fragment>
   );

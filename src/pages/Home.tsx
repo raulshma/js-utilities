@@ -49,6 +49,12 @@ const ListItemsString: ListItemType[] = [
     type: 'STRING',
     path: 'sconversion',
   },
+  {
+    title: 'String to Array',
+    desc: 'Convert string to array seperated by a symbol',
+    type: 'STRING',
+    path: 'sstoarray',
+  },
 ];
 const ListItemsDateTime: ListItemType[] = [
   {
