@@ -1,7 +1,6 @@
 import React from 'react';
 import { Box, Container, Text } from '@chakra-ui/react';
 import useTypingGame from 'react-typing-game-hook';
-import './style.css';
 
 export default function TypingBasic({ text }: { text: string }) {
   const {
@@ -31,7 +30,7 @@ export default function TypingBasic({ text }: { text: string }) {
 
   return (
     <Box
-      className="typing-test"
+      className="text-xl select-none outline-none"
       onKeyDown={(e) => {
         handleKey(e.key);
         e.preventDefault();

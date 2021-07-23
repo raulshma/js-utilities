@@ -1,7 +1,6 @@
 import { Box } from '@chakra-ui/react';
 import React, { useEffect, useRef, useState } from 'react';
-import useTyping from 'react-typing-game-hook'
-import "./tailwind.min.css";
+import useTyping from 'react-typing-game-hook';
 
 export default function TypingOnInput({ text }: { text: string }) {
   const [duration, setDuration] = useState(0);
@@ -97,7 +96,7 @@ export default function TypingOnInput({ text }: { text: string }) {
   return (
     <Box>
       <Box
-        className={`text-xl font-serif select-none`}
+        className={`text-xl select-none`}
         onClick={() => {
           inputRef.current.focus();
         }}
@@ -109,11 +108,11 @@ export default function TypingOnInput({ text }: { text: string }) {
             let state = charsState[index];
             let styling = 'text-red-500';
             if (shouldHightlight) {
-              styling = 'text-black bg-yellow-600';
+              styling = 'text-black bg-green-200';
             } else if (state === 0) {
-              styling = 'text-gray-700';
+              styling = 'text-gray-800';
             } else if (state === 1) {
-              styling = 'text-gray-400';
+              styling = 'text-green-700';
             }
             return (
               <span key={letter + index} className={`${styling}`}>
@@ -142,7 +141,7 @@ export default function TypingOnInput({ text }: { text: string }) {
             autoCorrect="off"
             autoCapitalize="off"
             spellCheck={false}
-            className={`focus:outline-none bg-black text-gray-400 border-b-2 p-1 w-full border-${
+            className={`focus-outline-none bg-black text-gray-400 border-b-6 p-1 w-full border-${
               !typingInput.length ? 'gray' : typedWrong ? 'red' : 'green'
             }-500`}
             placeholder={

@@ -1,7 +1,6 @@
 import { Box } from '@chakra-ui/react';
 import React, { useEffect, useMemo, useRef, useState } from 'react';
 import useTyping from 'react-typing-game-hook';
-import './tailwind.min.css';
 
 export default function TypingThroughText({ text }: { text: string }) {
   const [duration, setDuration] = useState(0);
@@ -19,7 +18,7 @@ export default function TypingThroughText({ text }: { text: string }) {
       endTime,
     },
     actions: { insertTyping, deleteTyping, resetTyping },
-  } = useTyping(text, { skipCurrentWordOnSpace: false, pauseOnError: true });
+  } = useTyping(text, { skipCurrentWordOnSpace: false, pauseOnError: false });
 
   // set cursor
   const pos = useMemo(() => {
@@ -64,10 +63,11 @@ export default function TypingThroughText({ text }: { text: string }) {
         onFocus={() => setIsFocused(true)}
         onBlur={() => setIsFocused(false)}
         className={`text-xl outline-none relative font-serif`}
+        style={{ outline: 'none' }}
       >
         <div
           ref={letterElements}
-          className="tracking-wide pointer-events-none select-none mb-4"
+          className="tracking-wide pointer-events-none outline-none select-none mb-4"
           tabIndex={0}
         >
           {text.split('').map((letter, index) => {
@@ -91,7 +91,7 @@ export default function TypingThroughText({ text }: { text: string }) {
               left: pos.left,
               top: pos.top,
             }}
-            className={`caret border-l-2 border-white`}
+            className={`caret border-l-2 border-black`}
           >
             &nbsp;
           </span>
