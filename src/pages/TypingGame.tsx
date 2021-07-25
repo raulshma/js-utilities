@@ -34,13 +34,17 @@ export default function TypingGame() {
       values = JSON.parse(localText).values;
     } catch {}
     if (values && values.length == 50) {
-      const para = values[Math.floor(Math.random() * values.length)];
+      const randomInt = Math.floor(Math.random() * values.length);
+      const para = values[randomInt];
       setWordsCount(para.split(' ').length);
       setText(para);
     } else {
-      fetch('http://metaphorpsum.com/paragraphs/1/30')
-        .then((res) => res.text())
-        .then((data) => {
+      fetch(
+        'https://whispering-retreat-75361.herokuapp.com/?url=http://metaphorpsum.com/paragraphs/1/30'
+      )
+        .then((res) => res.json())
+        .then((response) => {
+          const data = response.contents;
           if (localText.length > 0) {
             const { values }: { values: string[] } = JSON.parse(localText);
             if (values.length == 50) {
