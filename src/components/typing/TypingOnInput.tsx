@@ -1,4 +1,4 @@
-import { Box } from '@chakra-ui/react';
+import { Box, Center, Text } from '@chakra-ui/react';
 import React, { useEffect, useRef, useState } from 'react';
 import useTyping from 'react-typing-game-hook';
 
@@ -18,7 +18,7 @@ export default function TypingOnInput({ text }: { text: string }) {
       startTime,
       endTime,
     },
-    actions: { insertTyping, resetTyping },
+    actions: { insertTyping, resetTyping, getDuration },
   } = useTyping(text, {
     skipCurrentWordOnSpace: false,
   });
@@ -93,8 +93,25 @@ export default function TypingOnInput({ text }: { text: string }) {
     }
   }, [phase, startTime, endTime]);
 
+  const durationCalculate = (millis: number) => {
+    if (millis == 0)
+      return 'Click on text and start Typing / Press ESC to reset';
+    const minutes = Math.floor(millis / 60000);
+    const seconds: number = Number(((millis % 60000) / 1000).toFixed(0));
+    return `Elapsed ${
+      seconds == 60
+        ? minutes + 1 + ':00'
+        : minutes + ':' + (seconds < 10 ? '0' : '') + seconds
+    }`;
+  };
+
   return (
     <Box>
+      <Center>
+        <Text fontSize="large" p="2">
+          {durationCalculate(getDuration())}
+        </Text>
+      </Center>
       <Box
         className={`text-xl select-none`}
         onClick={() => {

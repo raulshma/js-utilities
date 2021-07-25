@@ -1,4 +1,4 @@
-import { Box } from '@chakra-ui/react';
+import { Box, Center, Text } from '@chakra-ui/react';
 import React, { useEffect, useMemo, useRef, useState } from 'react';
 import useTyping from 'react-typing-game-hook';
 
@@ -17,7 +17,7 @@ export default function TypingThroughText({ text }: { text: string }) {
       startTime,
       endTime,
     },
-    actions: { insertTyping, deleteTyping, resetTyping },
+    actions: { insertTyping, deleteTyping, resetTyping, getDuration },
   } = useTyping(text, { skipCurrentWordOnSpace: false, pauseOnError: false });
 
   // set cursor
@@ -55,8 +55,24 @@ export default function TypingThroughText({ text }: { text: string }) {
     }
   };
 
+  const durationCalculate = (millis: number) => {
+    if (millis == 0) return 'Click on text and start Typing / Press ESC to reset';
+    const minutes = Math.floor(millis / 60000);
+    const seconds: number = Number(((millis % 60000) / 1000).toFixed(0));
+    return `Elapsed ${
+      seconds == 60
+        ? minutes + 1 + ':00'
+        : minutes + ':' + (seconds < 10 ? '0' : '') + seconds
+    }`;
+  };
+
   return (
     <Box>
+      <Center>
+        <Text fontSize="large" p="2">
+          {durationCalculate(getDuration())}
+        </Text>
+      </Center>
       <Box
         tabIndex={0}
         onKeyDown={(e) => handleKeyDown(e.key, e.ctrlKey)}

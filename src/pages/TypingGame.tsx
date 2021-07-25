@@ -40,7 +40,7 @@ export default function TypingGame() {
       setText(para);
     } else {
       fetch(
-        'https://whispering-retreat-75361.herokuapp.com/?url=http://metaphorpsum.com/paragraphs/1/30'
+        'https://whispering-retreat-75361.herokuapp.com/?url=http://metaphorpsum.com/paragraphs/1/16'
       )
         .then((res) => res.json())
         .then((response) => {
